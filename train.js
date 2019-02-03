@@ -12,7 +12,7 @@ var config = {
   $("#add-train-btn").on("click", function(){
     var trainName = $("#train-name-input").val().trim();
     var trainDest = $("#destination-input").val().trim();
-    var firstTrain = moment($("#first-train-Input").val().trim(), "HH:mm").format("HH:mm");
+    var trainFirst = moment($("#first-train-input").val().trim(), "HH:mm").format("HH:mm");
     var trainFreq = $("frequency-input").val().trim();
 
     var train = {
@@ -29,24 +29,24 @@ database.ref().on("child_added", function(snapshot) {
     console.log(snapshot.val())
     
     var trainName = snapshot.val().name;
-    console.log(trainName)
+    // console.log(trainName)
     var trainDest = snapshot.val().destination;
     var trainFirst = snapshot.val().start;
     var trainFreq = snapshot.val().frequency;
-    var trainFirstConverted = moment(trainFirst, "HH:mm");
-    var currentTime = moment().format("HH:mm");
-    var diffTime = moment().diff(moment(trainFirstConverted), "minutes");
-    var tRemainder = diffTime % trainFreq;
-    var minAway = trainFreq - tRemainder;
-    var nextTrain = moment().add(minAway, "minutes").format("HH:mm");
-    console.log(nextTrain)
+    // var trainFirstConverted = moment(trainFirst, "HH:mm").subtract(1, "years");
+    // var currentTime = moment().format("HH:mm");
+    // var diffTime = moment().diff(moment(trainFirstConverted), "minutes");
+    // var tRemainder = diffTime % trainFreq;
+    // var minAway = trainFreq - tRemainder;
+    // var nextTrain = moment().add(minAway, "minutes").format("HH:mm");
+    // console.log(nextTrain)
 
     var newRow = $("<tr>").append(
         $("<td>").text(trainName),
         $("<td>").text(trainDest),
         $("<td>").text(trainFirst),
         $("<td>").text(trainFreq),
-        $("<td>").text(nextTrain),
+        // $("<td>").text(nextTrain),
       );
       $("#train-table > tbody").append(newRow);
 });
