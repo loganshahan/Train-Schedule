@@ -1,6 +1,13 @@
 #main-head{
-    text-align: center
+    text-align: center;
+    color: black;
+    background-color: red;
 }
 body{
-    background-image: url('')
+    background-image: url('https://www.dailydot.com/wp-content/uploads/bf5/34/3bb3241012d355d24ccb990f20b7309c.jpg');
+    background-size: 20%;
+}
+#add-train-btn{
+    color: black;
+    background-color: red;
 }
